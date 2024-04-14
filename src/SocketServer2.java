@@ -21,9 +21,11 @@ public class SocketServer2 {
 
 class CheckPin implements Runnable {
     private Socket clientSocket;
+    private FunctionOpt functionOpt;
 
     public CheckPin(Socket clientSocket) {
         this.clientSocket = clientSocket;
+        this.functionOpt = new FunctionOpt();
     }
 
     @Override
@@ -52,7 +54,7 @@ class CheckPin implements Runnable {
                     // break;
                     case 1:
                         System.out.println("menu 1");
-                        tulis.println("menu 1");
+                        tulis.println("menu 1" + functionOpt.cekSaldo());
                         break;
                     case 2:
                         System.out.println("menu 2");
