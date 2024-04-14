@@ -15,10 +15,9 @@ public class SocketClient2 {
                 BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in))) {
             String response;
             String pilihan;
-            Boolean status;
             while ((response = baca.readLine()) != null) {
                 System.out.println(response);
-                if (response.equals("Congrats! PIN Correct.")) {
+                if (response.equals("PinBenar")) {
                     do {
                         System.out.println("\n\nMenu:\n1. Check balance\n2. Withdraw\n3. Deposit\n4. Exit\nPIlihan");
 
@@ -29,20 +28,15 @@ public class SocketClient2 {
                         System.out.println(response);
                         if (response.equals("Transaksi")) {
                             System.out.print("Masukan Jumlah uang : ");
+
                             pilihan = userInput.readLine();
                             tulis.println(pilihan);
 
                             response = baca.readLine();
-
                             System.out.println(response);
+
                             System.out.println("Lakukan transaksi Lain?");
                             String repeat = scan.nextLine();
-                            // if (repeat == "n") {
-                            // tulis.println("4");
-                            // pilihan = "4";
-                            // socket.close();
-                            // return;
-                            // }
 
                         } else if (response.equals("Saldo")) {
                             response = baca.readLine();
@@ -50,13 +44,9 @@ public class SocketClient2 {
                             System.out.println("Lakukan transaksi Lain?");
                             String repeat = scan.nextLine();
                         }
-                        // System.out.println("\n Lakukan Transaksi Lagi? (y/n)");
-                        // String repeat = scanner.nextLine();
-                        // if (repeat.toLowerCase() == "n") {
-                        // pilihan = "4";
-                        // }
+
                     } while (!pilihan.equals("4"));
-                    System.out.println("Terimakasih");
+
                 }
 
                 String pin = userInput.readLine();

@@ -11,8 +11,7 @@ public class FunctionOpt {
             saldo -= transaksi;
             return saldo;
         } else {
-            // Insufficient balance for the transaction
-            return -1; // You can return any value indicating failure
+            return -1;
         }
     }
 

@@ -43,7 +43,7 @@ class CheckPin implements Runnable {
                 tulis.println("Enter PIN:");
                 pin = baca.readLine();
             } while (!pin.equals(correctPin));
-            tulis.println("Congrats! PIN Correct.");
+            tulis.println("PinBenar");
 
             while (!(pilihanServer = baca.readLine()).equals("4")) {
                 Integer nominal;
