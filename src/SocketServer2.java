@@ -86,7 +86,6 @@ class CheckPin implements Runnable {
                         break;
                 }
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }

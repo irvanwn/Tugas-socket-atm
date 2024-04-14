@@ -52,6 +52,7 @@ public class SocketClient2 {
                 String pin = userInput.readLine();
                 tulis.println(pin);
             }
+            socket.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
