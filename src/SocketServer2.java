@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.*;
+import java.util.Scanner;
 
 public class SocketServer2 {
     public static void main(String[] args) {
@@ -31,6 +32,7 @@ class CheckPin implements Runnable {
     @Override
     public void run() {
         try (
+                Scanner myObj = new Scanner(System.in);
                 BufferedReader baca = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 PrintWriter tulis = new PrintWriter(clientSocket.getOutputStream(), true)) {
             String correctPin = "1234";
@@ -43,7 +45,8 @@ class CheckPin implements Runnable {
             } while (!pin.equals(correctPin));
             tulis.println("Congrats! PIN Correct.");
 
-            while (!(pilihanServer = baca.readLine()).equals("5")) {
+            while (!(pilihanServer = baca.readLine()).equals("4")) {
+                Integer nominal;
                 System.out.println(pilihanServer);
                 Integer pilihanInt = Integer.parseInt(pilihanServer);
                 System.out.println(pilihanInt);
@@ -53,16 +56,27 @@ class CheckPin implements Runnable {
                     // tulis.println("menu 0");
                     // break;
                     case 1:
-                        System.out.println("menu 1");
-                        tulis.println("menu 1" + functionOpt.cekSaldo());
+                        System.out.println("menu Cek Saldo");
+                        tulis.println("Saldo");
+                        tulis.println("Saldo anda : " + functionOpt.cekSaldo());
+
                         break;
                     case 2:
-                        System.out.println("menu 2");
-                        tulis.println("menu 2");
+                        tulis.println("Transaksi");
+                        pilihanServer = baca.readLine();
+                        nominal = Integer.parseInt(pilihanServer);
+                        Double sisaSaldo = functionOpt.TarikTunai(nominal);
+                        if (sisaSaldo < 0) {
+                            tulis.println("Saldo Tidak cukup, anda miskin");
+                        } else {
+                            tulis.println("Sisa Saldo anda : " + sisaSaldo);
+                        }
                         break;
                     case 3:
-                        System.out.println("menu 3");
-                        tulis.println("menu 3");
+                        tulis.println("Transaksi");
+                        pilihanServer = baca.readLine();
+                        nominal = Integer.parseInt(pilihanServer);
+                        tulis.println("Saldo anda : " + functionOpt.SetorTunai(nominal));
                         break;
                     case 4:
                         System.out.println("menu 4");

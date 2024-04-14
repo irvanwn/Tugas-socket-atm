@@ -1,5 +1,6 @@
 import java.io.*;
 import java.net.*;
+import java.util.Scanner;
 
 public class SocketClient2 {
     public static void main(String[] args) {
@@ -7,13 +8,14 @@ public class SocketClient2 {
         final int PORT = 270;
 
         try (
-                // Scanner scanner = new Scanner(System.in);
+                Scanner scan = new Scanner(System.in);
                 Socket socket = new Socket(SERVER_ADDRESS, PORT);
                 BufferedReader baca = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 PrintWriter tulis = new PrintWriter(socket.getOutputStream(), true);
                 BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in))) {
             String response;
             String pilihan;
+            Boolean status;
             while ((response = baca.readLine()) != null) {
                 System.out.println(response);
                 if (response.equals("Congrats! PIN Correct.")) {
@@ -25,12 +27,35 @@ public class SocketClient2 {
 
                         response = baca.readLine();
                         System.out.println(response);
+                        if (response.equals("Transaksi")) {
+                            System.out.print("Masukan Jumlah uang : ");
+                            pilihan = userInput.readLine();
+                            tulis.println(pilihan);
+
+                            response = baca.readLine();
+
+                            System.out.println(response);
+                            System.out.println("Lakukan transaksi Lain?");
+                            String repeat = scan.nextLine();
+                            // if (repeat == "n") {
+                            // tulis.println("4");
+                            // pilihan = "4";
+                            // socket.close();
+                            // return;
+                            // }
+
+                        } else if (response.equals("Saldo")) {
+                            response = baca.readLine();
+                            System.out.println(response);
+                            System.out.println("Lakukan transaksi Lain?");
+                            String repeat = scan.nextLine();
+                        }
                         // System.out.println("\n Lakukan Transaksi Lagi? (y/n)");
                         // String repeat = scanner.nextLine();
                         // if (repeat.toLowerCase() == "n") {
                         // pilihan = "4";
                         // }
-                    } while (!pilihan.equals("5"));
+                    } while (!pilihan.equals("4"));
                     System.out.println("Terimakasih");
                 }
 
