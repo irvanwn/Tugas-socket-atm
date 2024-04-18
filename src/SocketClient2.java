@@ -49,6 +49,8 @@ public class SocketClient2 {
                             String repeat = scan.nextLine();
                             if (!repeat.equalsIgnoreCase("Y")) {
                                 tulis.println("4");
+
+                                System.out.println("Terimakasih!");
                                 break;
                             }
                         }
