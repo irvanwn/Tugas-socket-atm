@@ -1,6 +1,5 @@
 import java.io.*;
 import java.net.*;
-import java.util.Scanner;
 
 public class SocketServer2 {
     public static void main(String[] args) {
@@ -32,7 +31,6 @@ class CheckPin implements Runnable {
     @Override
     public void run() {
         try (
-                Scanner myObj = new Scanner(System.in);
                 BufferedReader baca = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 PrintWriter tulis = new PrintWriter(clientSocket.getOutputStream(), true)) {
             String correctPin = "1234";

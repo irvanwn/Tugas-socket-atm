@@ -35,7 +35,7 @@ public class SocketClient2 {
                             response = baca.readLine();
                             System.out.println(response);
 
-                            System.out.println("Lakukan transaksi Lain?");
+                            System.out.println("Lakukan transaksi Lain? (y/n)");
                             String repeat = scan.nextLine();
                             if (!repeat.equalsIgnoreCase("Y")) {
                                 tulis.println("4");
