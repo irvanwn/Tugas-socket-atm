@@ -17,7 +17,9 @@ public class SocketClient2 {
             String pilihan;
             while ((response = baca.readLine()) != null) {
                 System.out.println(response);
-                if (response.equals("PinBenar")) {
+                if (response.equals("PinSalah")) {
+                    continue;
+                } else if (response.equals("PinBenar")) {
                     do {
                         System.out.println("\n\nMenu:\n1. Check balance\n2. Withdraw\n3. Deposit\n4. Exit\nPIlihan");
 
@@ -39,6 +41,8 @@ public class SocketClient2 {
                             String repeat = scan.nextLine();
                             if (!repeat.equalsIgnoreCase("Y")) {
                                 tulis.println("4");
+
+                                System.out.println("Terimakasih!");
                                 break;
                             }
                         } else if (response.equals("Saldo")) {

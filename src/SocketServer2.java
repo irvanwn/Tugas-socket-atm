@@ -40,6 +40,9 @@ class CheckPin implements Runnable {
             do {
                 tulis.println("Enter PIN:");
                 pin = baca.readLine();
+                if (!pin.equals(correctPin)) {
+                    tulis.println("PinSalah");
+                }
             } while (!pin.equals(correctPin));
             tulis.println("PinBenar");
 
@@ -81,7 +84,8 @@ class CheckPin implements Runnable {
                         tulis.println("menu 4");
                         break;
                     default:
-                        break;
+                        System.out.println("Error");
+                        continue;
                 }
             }
         } catch (IOException e) {
