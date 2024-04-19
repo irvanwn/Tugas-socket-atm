@@ -84,8 +84,8 @@ class CheckPin implements Runnable {
                         tulis.println("menu 4");
                         break;
                     default:
-                        System.out.println("Error");
-                        continue;
+                        tulis.println("default");
+                        break;
                 }
             }
         } catch (IOException e) {

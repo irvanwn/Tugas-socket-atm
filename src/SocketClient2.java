@@ -57,6 +57,18 @@ public class SocketClient2 {
                                 System.out.println("Terimakasih!");
                                 break;
                             }
+                        } else if (response.equals("default")) {
+                            response = baca.readLine();
+
+                            System.out.println("Pilih Menu yang tersedia!, Lakukan Transaksi ulang? (y/n)");
+                            String repeat = scan.nextLine();
+                            if (!repeat.equalsIgnoreCase("Y")) {
+                                tulis.println("4");
+
+                                System.out.println("Terimakasih!");
+                                break;
+                            }
+
                         }
 
                     } while (!pilihan.equals("4"));
